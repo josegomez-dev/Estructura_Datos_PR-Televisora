@@ -75,9 +75,14 @@ string ListaAnuncios::toString(void)
 {
 	NodoAnuncio * aux = this->getCabeza();
 	string s = "";
-	while (aux != NULL) {
-		s += aux->getInfo()->toString() + "\n";
-		aux = aux->getSig();
+	if (aux != NULL) {
+		while (aux != NULL) {
+			s += aux->getInfo()->toString() + "\n";
+			aux = aux->getSig();
+		}
+	}
+	else {
+		return "EMPTY"; // LISTA VACIA
 	}
 	return s;
 }
