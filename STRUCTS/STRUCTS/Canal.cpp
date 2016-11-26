@@ -5,102 +5,113 @@ long Canal::cantCanales = 0;
 
 Canal::Canal()
 {
-	setId();
+	this->setId();
 }
 
 Canal::Canal(string pnombre, string ptelefono)
 {
-	setId();
-	setNombre(pnombre);
-	setTelefono(ptelefono);
+	this->setId();
+	this->setNombre(pnombre);
+	this->setTelefono(ptelefono);
 }
 
 Canal::Canal(string pnombre, string ptelefono, double pcostoBase, int ptiempoTransMin, int ptiempoTransMax, double pcostoXMinuto)
 {
-	setId();
-	setNombre(pnombre);
-	setTelefono(ptelefono);
-	setCostoBase(pcostoBase);
-	setTiempoTransMin(ptiempoTransMin);
-	setTiempoTransMax(ptiempoTransMax);
-	setCostoBase(pcostoBase);
+	this->setId();
+	this->setNombre(pnombre);
+	this->setTelefono(ptelefono);
+	this->setCostoBase(pcostoBase);
+	this->setTiempoTransMin(ptiempoTransMin);
+	this->setTiempoTransMax(ptiempoTransMax);
+	this->setCostoXMinuto(pcostoXMinuto);
 }
+
 Canal::Canal(double pcostoBase, int ptiempoTransMin, int ptiempoTransMax)
 {
-	setId();
-	//setNombre("Unknown");
-	//setTelefono(???);
-	setCostoBase(pcostoBase);
-	setTiempoTransMin(ptiempoTransMin);
-	setTiempoTransMax(ptiempoTransMax);
+	this->setId();
+	this->setCostoBase(pcostoBase);
+	this->setTiempoTransMin(ptiempoTransMin);
+	this->setTiempoTransMax(ptiempoTransMax);
 }
 
 void Canal::setId()
 {
-	id = ++cantCanales;
+	this->id = std::to_string(++cantCanales);
 }
 
-long Canal::getId()
+string Canal::getId()
 {
-	return id;
+	return this->id;
 }
 
 void Canal::setNombre(string pnombre)
 {
-	nombre = pnombre;
+	this->nombre = pnombre;
 }
 
 string Canal::getNombre()
 {
-	return nombre;
+	return this->nombre;
 }
 
 void Canal::setTelefono(string ptelefono)
 {
-	telefono = ptelefono;
+	this->telefono = ptelefono;
 }
 
 string Canal::getTelefono()
 {
-	return telefono;
+	return this->telefono;
 }
 
 void Canal::setCostoBase(double pcostoBase)
 {
-	costoBase = pcostoBase;
+	this->costoBase = pcostoBase;
 }
 
 double Canal::getCostoBase()
 {
-	return costoBase;
+	return this->costoBase;
 }
 
 void Canal::setTiempoTransMin(int ptiempoTransMin)
 {
-	tiempoTransMin = ptiempoTransMin;
+	this->tiempoTransMin = ptiempoTransMin;
 }
 
 int Canal::getTiempoTransMin()
 {
-	return tiempoTransMin;
+	return this->tiempoTransMin;
 }
 
 void Canal::setTiempoTransMax(int ptiempoTransMax)
 {
-	tiempoTransMax = ptiempoTransMax;
+	this->tiempoTransMax = ptiempoTransMax;
 }
 
 int Canal::getTiempoTransMax()
 {
-	return tiempoTransMax;
+	return this->tiempoTransMax;
 }
 
 void Canal::setCostoXMinuto(double pcostoXMinuto)
 {
-	costoXminuto = pcostoXMinuto;
+	this->costoXminuto = pcostoXMinuto;
 }
 
 double Canal::getCostoXMinuto()
 {
-	return costoXminuto;
+	return this->costoXminuto;
+}
+
+string Canal::toString(void)
+{
+	string s =  "ID: " + this->getId() + "\n";
+	       s += "NOMBRE: " + this->getNombre() + "\n";
+		   s += "TELEFONO" + this->getTelefono() + "\n";
+		   s += "COSTO BASE: " + std::to_string(this->getCostoBase()) + "$\n";
+		   s += "T MIN TRANSMICION: " + std::to_string(this->getTiempoTransMin()) + "min\n";
+		   s += "T MAX TRANSMICION: " + std::to_string(this->getTiempoTransMax()) + "min\n";
+		   s += "COSTO POR MINUTO: " + std::to_string(this->getCostoXMinuto()) + "$\n";
+	return s;
 }

@@ -65,8 +65,8 @@ Anuncio *& AnuncioContratado::getAnuncio()
 
 string AnuncioContratado::toString(void)
 {
-	string s =  "ID:	  " + this->getId()    + "\n";
-		   s += "COSTO:  " + std::to_string(this->getCosto()) + "$ \n";
+	string s =  "ID: " + this->getId()    + "\n";
+		   s += "COSTO: " + std::to_string(this->getCosto()) + "$ \n";
 		   if (this->getAnuncio() != NULL) {
 			   s += "ANUNCIO: " + this->getAnuncio()->toString() + "\n";
 		   }

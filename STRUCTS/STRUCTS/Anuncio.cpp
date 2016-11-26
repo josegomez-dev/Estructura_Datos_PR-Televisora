@@ -58,9 +58,9 @@ int Anuncio::getDuracion(void)
 
 string Anuncio::toString(void)
 {
-	string s =  "ID:	   " + this->getId()			    	   + "\n";
-		   s += "NOMBRE:   " + this->getNombre()				   + "\n";
+	string s =  "ID: " + this->getId() + "\n";
+		   s += "NOMBRE: " + this->getNombre() + "\n";
 		   s += "DURACION: " + std::to_string(this->getDuracion()) + "min\n";
-		   s += "EMPRESA:  " + this->getCodigoEmpreas()			   + "\n";
+		   s += "EMPRESA: " + this->getCodigoEmpreas() + "\n";
 	return s;
 }

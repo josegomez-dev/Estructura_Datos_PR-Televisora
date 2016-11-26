@@ -47,9 +47,14 @@ string ListaAnunciosContratados::toString(void)
 {
 	NodoAnuncioContratado * aux = this->getCabeza();
 	string resul = "";
-	while (aux != NULL) {
-		resul += aux->getInfo()->toString() + "\n";
-		aux = aux->getSig();
+	if (aux != NULL) {
+		while (aux != NULL) {
+			resul += aux->getInfo()->toString() + "\n";
+			aux = aux->getSig();
+		}
+	}
+	else {
+		return "EMPTY"; // LISTA VACIA
 	}
 	return resul;
 }

@@ -9,7 +9,7 @@ using namespace std;
 class Canal
 {
 private:
-	long id;
+	string id;
 	static long cantCanales;
 	string nombre;
 	string telefono;
@@ -22,8 +22,9 @@ public:
 	Canal(string, string);
 	Canal(string, string, double, int, int, double);
 	Canal(double pcostoBase = 10.21, int ptiempoTransMin = 1, int ptiempoTransMax = 60);
+	
 	void setId();
-	long getId();
+	string getId();
 	void setNombre(string);
 	string getNombre();
 	void setTelefono(string);
@@ -36,6 +37,8 @@ public:
 	int getTiempoTransMax();
 	void setCostoXMinuto(double);
 	double getCostoXMinuto();
+
+	string toString(void);
 };
 
 #endif

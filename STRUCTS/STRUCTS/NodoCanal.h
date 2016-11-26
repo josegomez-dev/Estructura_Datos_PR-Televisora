@@ -9,7 +9,7 @@ private:
 	NodoCanal *sig;
 public:
 	NodoCanal(void);
-	NodoCanal(Canal  * nd);
+	NodoCanal(Canal  *nd);
 
 	Canal * getInfo(void);
 	void setInfo(Canal c);
