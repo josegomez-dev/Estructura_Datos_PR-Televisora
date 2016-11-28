@@ -1,6 +1,0 @@
-﻿  STRUCTS.cpp
-c:\users\alego\documents\github\estructura_datos_pr-televisora\structs\structs\structs.cpp(98): warning C4172: returning address of local variable or temporary: lst
-c:\users\alego\documents\github\estructura_datos_pr-televisora\structs\structs\structs.cpp(109): warning C4172: returning address of local variable or temporary: lst
-c:\users\alego\documents\github\estructura_datos_pr-televisora\structs\structs\structs.cpp(121): warning C4172: returning address of local variable or temporary: lst
-  STRUCTS.vcxproj -> C:\Users\alego\Documents\GitHub\Estructura_Datos_PR-Televisora\STRUCTS\Debug\STRUCTS.exe
-  STRUCTS.vcxproj -> C:\Users\alego\Documents\GitHub\Estructura_Datos_PR-Televisora\STRUCTS\Debug\STRUCTS.pdb (Full PDB)
