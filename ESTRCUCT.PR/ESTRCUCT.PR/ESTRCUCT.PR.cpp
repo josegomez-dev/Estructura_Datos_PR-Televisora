@@ -34,9 +34,9 @@ void mostrarMenu(void) {
 	cout << "                                                       " << endl;
 	cout << "   1. Registrar Anuncio   |   6. Consultar Canal        " << endl;
 	cout << "   2. Registrar Canal     |   7. Desplegar informacion  " << endl;
-	cout << "   3. Incluir Contrato    |	                         " << endl;
-	cout << "   4. Consultar Anuncio   |   10. Probar sistema        " << endl;
-	cout << "   5. Eliminar Anuncio    |   11. Salir                 " << endl;
+	cout << "   3. Incluir Contrato    |   8. Actualizar Cobros      " << endl;
+	cout << "   4. Consultar Anuncio   |   9. Probar sistema        " << endl;
+	cout << "   5. Eliminar Anuncio    |   10. Salir                 " << endl;
 	cout << " ________________________________________________________ " << endl;
 	
 	SetConsoleTextAttribute(console, FOREGROUND_GREEN );
@@ -117,12 +117,16 @@ bool ejecutarAccion(int opc) {
 			desplegarInformacionListas();
 			break;
 		
-		case 10: // Probar sistema
+		case 8:
+			lstCanales->actualizarCobros();
+			break;
+	
+		case 9: // Probar sistema
 			fillBaseData();
 			cout << "\n SE REGISTRARON DATOS BASE \n" << endl;
 			break;
 
-		case 11: // Salir
+		case 10: // Salir
 			noSalir = false;
 			break;
 
@@ -182,23 +186,23 @@ void desplegarInformacionListas(void) {
 void fillBaseData() {
 
 	// NodoCanal(codigo, nombre, telefono, costoMinimo, tTransmicionMinimo, tTransmicionMaximo, costoPorMinuto)
-	NodoCanal * warner = new NodoCanal(35, "WARNER", "20436578", 40, 1, 2500000, 130);
-	NodoCanal * mtv = new NodoCanal(30, "MTV", "20436578", 25, 1, 100000, 100);
-	NodoCanal * acme = new NodoCanal(4, "ACME", "5646598", 60, 1, 500000, 200);
-	NodoCanal * teletica = new NodoCanal(7, "TELETICA", "65489878", 18, 1, 1000, 50);
+	NodoCanal * warner = new NodoCanal(35, "WARNER", "20436578", 40, 1, 2000, 130);
+	NodoCanal * mtv = new NodoCanal(30, "MTV", "20436578", 25, 15, 1000, 100);
+	NodoCanal * acme = new NodoCanal(4, "ACME", "5646598", 60, 120, 5000, 200);
+	NodoCanal * teletica = new NodoCanal(7, "TELETICA", "65489878", 18, 10, 1000, 50);
 
 	lstCanales->addItem(warner); lstCanales->addItem(mtv); lstCanales->addItem(acme); lstCanales->addItem(teletica);
 
 	// NodoAnuncio(tiempoDuracion, codigoEmpresa, nombreEmpresa)
-	NodoAnuncio * a1 = new NodoAnuncio(90, 9978456, "FRIENDS");
+	NodoAnuncio * a1 = new NodoAnuncio(5000, 9978456, "FRIENDS");
 	NodoAnuncio * a2 = new NodoAnuncio(60, 165789, "WEEDS");
-	NodoAnuncio * a3 = new NodoAnuncio(120, 65368, "CORRECAMINOS");
+	NodoAnuncio * a3 = new NodoAnuncio(250, 65368, "CORRECAMINOS");
 
 	lstCanales->getLstAnuncios()->addItemASC(a1); lstCanales->getLstAnuncios()->addItemASC(a2); lstCanales->getLstAnuncios()->addItemASC(a3);
 
 	// incluirContrato(codigoAnuncio, codigoCanal)
-	lstCanales->incluirContrato(1, 30);
-	lstCanales->incluirContrato(2, 30);
+	lstCanales->incluirContrato(1, 35);
+	lstCanales->incluirContrato(2, 35);
 	lstCanales->incluirContrato(3, 4);
 
 }
