@@ -4,24 +4,14 @@
 unsigned long NodoAnuncio::cantAnuncios = 0;
 
 
-NodoAnuncio::NodoAnuncio(unsigned long codigoE)
+NodoAnuncio::NodoAnuncio(int t, unsigned long codigoE, string n)
 {
 	this->setSig(NULL);
 
 	this->setCodigoAnuncio();
-	this->setTiempoDuracion(0);
+	this->setTiempoDuracion(t);
 	this->setCodigoEmpresa(codigoE);
-	this->setNombreEmpresa("");
-}
-
-NodoAnuncio::NodoAnuncio(unsigned long codigoE, string ne)
-{
-	this->setSig(NULL);
-
-	this->setCodigoAnuncio();
-	this->setTiempoDuracion(0);
-	this->setCodigoEmpresa(codigoE);
-	this->setNombreEmpresa(ne);
+	this->setNombreEmpresa(n);
 }
 
 void NodoAnuncio::setCodigoAnuncio(void)

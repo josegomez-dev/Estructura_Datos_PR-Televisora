@@ -24,7 +24,7 @@ private:
 	NodoCanal *sig;
 public:
 	NodoCanal(unsigned int);
-	NodoCanal(unsigned int, string);
+	NodoCanal(unsigned int, string, string, double, int, int, double);
 
 	unsigned int getCodigoCanal(void);
 	void setCodigoCanal(unsigned int);
