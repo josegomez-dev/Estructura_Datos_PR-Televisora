@@ -4,10 +4,24 @@
 unsigned long NodoAnuncio::cantAnuncios = 0;
 
 
-NodoAnuncio::NodoAnuncio()
+NodoAnuncio::NodoAnuncio(unsigned long codigoE)
 {
 	this->setSig(NULL);
+
 	this->setCodigoAnuncio();
+	this->setTiempoDuracion(0);
+	this->setCodigoEmpresa(codigoE);
+	this->setNombreEmpresa("");
+}
+
+NodoAnuncio::NodoAnuncio(unsigned long codigoE, string ne)
+{
+	this->setSig(NULL);
+
+	this->setCodigoAnuncio();
+	this->setTiempoDuracion(0);
+	this->setCodigoEmpresa(codigoE);
+	this->setNombreEmpresa(ne);
 }
 
 void NodoAnuncio::setCodigoAnuncio(void)
@@ -50,7 +64,7 @@ string NodoAnuncio::getNombreEmpresa(void)
 	return this->nombreEmpresa;
 }
 
-NodoAnuncio *& NodoAnuncio::getSig(void)
+NodoAnuncio * NodoAnuncio::getSig(void)
 {
 	return this->sig;
 }

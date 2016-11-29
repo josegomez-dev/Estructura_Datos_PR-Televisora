@@ -14,7 +14,7 @@ private:
 public:
 	ListaAnuncios(void);
 
-	NodoAnuncio*& getCabeza(void);
+	NodoAnuncio* getCabeza(void);
 	void setCabeza(NodoAnuncio *);
 
 	int getlongitud(void) const;

@@ -18,12 +18,13 @@ private:
 	unsigned int tTransmicionMaxima;
 	double costoPorMinuto;
 
-	NodoAnuncioContratado *subLst;
+	NodoAnuncioContratado *sub;
 
 	NodoCanal *ant;
 	NodoCanal *sig;
 public:
-	NodoCanal(void);
+	NodoCanal(unsigned int);
+	NodoCanal(unsigned int, string);
 
 	unsigned int getCodigoCanal(void);
 	void setCodigoCanal(unsigned int);
@@ -46,14 +47,14 @@ public:
 	double getCostoPorMinuto(void);
 	void setCostoPorMinuto(double);
 
-	NodoCanal *& getAnt(void);
+	NodoCanal * getAnt(void);
 	void setAnt(NodoCanal *);
 
-	NodoCanal *& getSig(void);
+	NodoCanal * getSig(void);
 	void setSig(NodoCanal *);
 
-	NodoAnuncioContratado *& getSubLst(void);
-	void setSubLst(NodoAnuncioContratado *);
+	NodoAnuncioContratado * getSub(void);
+	void setSub(NodoAnuncioContratado *);
 
 	string toString(void);
 

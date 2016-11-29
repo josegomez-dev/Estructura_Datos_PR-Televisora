@@ -2,6 +2,7 @@
 #define LISTACANALES_H
 
 #include "NodoCanal.h"
+#include "ListaAnuncios.h"
 
 class ListaCanales
 {
@@ -10,6 +11,8 @@ private:
 
 	NodoCanal * cabeza;
 	NodoCanal * ultimo;
+
+	ListaAnuncios *lstAnuncios;
 public:
 	ListaCanales(void);
 
@@ -22,10 +25,19 @@ public:
 	NodoCanal *& getUltimo(void);
 	void setUltimo(NodoCanal *);
 
+	ListaAnuncios *& getLstAnuncios(void);
+	void setLstAnuncios(ListaAnuncios *);
+
 	void addItem(NodoCanal *);
+	NodoCanal * retrieveItem(unsigned int);
+	NodoAnuncio * retrieveAnuncio(unsigned long);
+	bool incluirContrato(unsigned long, unsigned int, ListaAnuncios *);
+
 
 	string toString_StartToEnd(void);
 	string toString_EndToStart(void);
+
+	string toString_Super(void);
 	
 };
 

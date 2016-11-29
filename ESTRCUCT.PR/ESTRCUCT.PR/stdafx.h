@@ -27,6 +27,9 @@ using namespace std;
 void mostrarMenu(void);
 int leerOpcion(void);
 bool ejecutarAccion(int);
+void desplegarInformacionListas(void);
 
+void crearContrato(void);
 NodoAnuncio *& crearAnuncio(void);
 NodoCanal *& crearCanal(void);
+void fillBaseData(void);

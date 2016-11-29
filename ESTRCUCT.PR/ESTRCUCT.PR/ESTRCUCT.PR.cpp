@@ -5,11 +5,11 @@
 
 HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE); // For use of SetConsoleTextAttribute()
 
-static ListaAnuncios * lstAnuncios = new ListaAnuncios();
 static ListaCanales * lstCanales = new ListaCanales();
 
 int main()
 {
+	lstCanales->setLstAnuncios(new ListaAnuncios());
 	bool noSalir = true;
 	int opc;
 
@@ -20,6 +20,7 @@ int main()
 	} while (noSalir);
 	
 	system("pause");
+	cin.get();
     return 0;
 }
 
@@ -36,7 +37,7 @@ void mostrarMenu(void) {
 	cout << "   3. Eliminar Anuncio     |    9. Eliminar Contrato      " << endl;
 	cout << "   4. Crear Canal          |    10. Desplegar Informacion " << endl;
 	cout << "   5. Consultar Canal      |    11. Salir                 " << endl;
-	cout << "   6. Elminar Canal        |		                       " << endl;
+	cout << "   6. Elminar Canal        |	 12. TEST				   " << endl;
 	cout << " ___________________________________________________________ " << endl;
 	
 	SetConsoleTextAttribute(console, FOREGROUND_GREEN );
@@ -59,7 +60,7 @@ bool ejecutarAccion(int opc) {
 	switch (opc) {
 		case 1: // Crear Anuncio
 			
-			lstAnuncios->addItemASC(crearAnuncio());
+			lstCanales->getLstAnuncios()->addItemASC(crearAnuncio());
 			
 			cout << "\n*/!*/!*/! Anuncio creado exitosamente !/*!/*!/*\n" << endl;
 			
@@ -70,7 +71,7 @@ bool ejecutarAccion(int opc) {
 			unsigned long cod;
 
 			cout << "Ingrese el codigo del anuncio que desea buscar: "; cin >> cod;
-			c_nodo = lstAnuncios->retrieveItem(cod);
+			c_nodo = lstCanales->getLstAnuncios()->retrieveItem(cod);
 
 			if (c_nodo != nullptr) {
 				cout << c_nodo->toString();
@@ -87,10 +88,10 @@ bool ejecutarAccion(int opc) {
 
 			cout << "Ingrese el codigo del anuncio que desea eliminar"; cin >> codigo;
 
-			e_nodo = lstAnuncios->retrieveItem(codigo);
+			e_nodo = lstCanales->getLstAnuncios()->retrieveItem(codigo);
 			
 			if (e_nodo != nullptr) {
-				lstAnuncios->deleteItem(e_nodo);
+				lstCanales->getLstAnuncios()->deleteItem(e_nodo);
 				cout << "\n */!*/!*/! Anuncio eliminado exitosamente !/*!/*!/* \n";
 			}
 			else {
@@ -107,19 +108,24 @@ bool ejecutarAccion(int opc) {
 
 			break;
 		case 5: // Consultar Canal
+
+			unsigned int asdcod;
+
+			cout << "Ingrese el codigo del canal: "; cin >> asdcod;
+			
+			NodoCanal * asd;
+			asd = lstCanales->retrieveItem(asdcod);
+			cout << ((asd != NULL ) ? asd->getNombreCanal() : "No encontrado") << endl;
+
+
 			break;
 		case 6: // Eliminar Canal
 			break;
 
 		case 7: // Crear Contrato
-			try
-			{
-				lstAnuncios->addItemASC(crearAnuncio());
-			}
-			catch (const std::exception& ex)
-			{
-				cout << "EXCEPCION" << endl;
-			}
+			
+			crearContrato();
+
 			break;
 		case 8: // Consultar Contrato
 			break;
@@ -127,23 +133,16 @@ bool ejecutarAccion(int opc) {
 			break;
 		case 10: // Desplegar informacion
 
-			SetConsoleTextAttribute(console, FOREGROUND_BLUE | FOREGROUND_GREEN);
+			desplegarInformacionListas();
 			
-			cout << "____________________________________________________" << endl;
-			cout << "\n *** LISTA DE ANUNCIOS REGISTRADOS *** \n" << endl;
-			cout << lstAnuncios->toString() << endl;
-			cout << "____________________________________________________" << endl;
-
-			cout << "____________________________________________________" << endl; 
-			cout << "\n *** LISTA DE CANALES REGISTRADOS *** \n" << endl;
-			cout << lstCanales->toString_StartToEnd() << endl;
-			cout << "____________________________________________________" << endl;
-			
-			SetConsoleTextAttribute(console, FOREGROUND_INTENSITY);
 			break;
 
 		case 11: // Salir
 			noSalir = false;
+			break;
+		case 12: // TEST
+			fillBaseData();
+			cout << "\n SE REGISTRARON DATOS BASE \n" << endl;
 			break;
 		default: // Opcion Invalida
 			cout << "\n */!*/! Opcion Invalida !/*!/* \n" << endl;
@@ -154,21 +153,31 @@ bool ejecutarAccion(int opc) {
 	return noSalir;
 }
 
+void crearContrato(void) {
+
+	unsigned long codigoAn;	cout << "Ingrese el codigo del anuncio: "; cin >> codigoAn;
+	unsigned int codigoC; cout << "Ingrese el codigo del canal: "; cin >> codigoC;
+
+	lstCanales->incluirContrato(codigoAn, codigoC, lstCanales->getLstAnuncios());
+}
+
 NodoAnuncio *& crearAnuncio(void) {
-	NodoAnuncio * anuncio = new NodoAnuncio();
+
 	string n; unsigned int c; int t;
 
-	cout << "Ingrese el nombre de la empresa: "; cin >> n;
 	cout << "Ingrese el codigo de la empresa: "; cin >> c;
+	cout << "Ingrese el nombre de la empresa: "; cin >> n;
 	cout << "Ingrese el tiempo de duracion del anuncio (seg): "; cin >> t;
 	
+	NodoAnuncio * anuncio = new NodoAnuncio(c, n);
+
 	anuncio->setNombreEmpresa(n); anuncio->setCodigoEmpresa(c); anuncio->setTiempoDuracion(t);
 	
 	return anuncio;
 }
 
 NodoCanal *& crearCanal(void) {
-	NodoCanal * canal = new NodoCanal();
+	
 	unsigned int c; string n; string t; double m; unsigned int ttmin; unsigned int ttmax; double cm;
 
 	cout << "Ingrese el codigo del canal: "; cin >> c;
@@ -179,7 +188,7 @@ NodoCanal *& crearCanal(void) {
 	cout << "Ingrese el tiempo de transmicion maxima (seg): "; cin >> ttmax;
 	cout << "Ingrese el costo por minuto del canal ($): "; cin >> cm;
 
-	canal->setCodigoCanal(c);
+	NodoCanal * canal = new NodoCanal(c);
 	canal->setNombreCanal(n);
 	canal->setTelefono(t);
 	canal->setMontoMinimo(m);
@@ -188,4 +197,35 @@ NodoCanal *& crearCanal(void) {
 	canal->setCostoPorMinuto(cm);
 	
 	return canal;
+}
+
+void desplegarInformacionListas(void) {
+	SetConsoleTextAttribute(console, FOREGROUND_BLUE | FOREGROUND_GREEN);
+	cout << "\n *** SUPER LISTA *** \n" << endl;
+	cout << lstCanales->toString_Super() << endl;
+	cout << "____________________________________________________" << endl;
+	SetConsoleTextAttribute(console, FOREGROUND_INTENSITY);
+}
+
+void fillBaseData() {
+	NodoCanal * warner = new NodoCanal(35); warner->setNombreCanal("WARNER");
+	NodoCanal * mtv = new NodoCanal(30); mtv->setNombreCanal("MTV");
+	NodoCanal * acme = new NodoCanal(4); acme->setNombreCanal("ACME");
+	NodoCanal * teletica = new NodoCanal(7); teletica->setNombreCanal("TELETICA");
+
+	lstCanales->addItem(warner); lstCanales->addItem(mtv); lstCanales->addItem(acme);
+
+	NodoAnuncio * a1 = new NodoAnuncio(1, "FRIENDS");
+	NodoAnuncio * a2 = new NodoAnuncio(2, "WEEDS");
+	NodoAnuncio * a3 = new NodoAnuncio(3, "CORRECAMINOS");
+
+	lstCanales->getLstAnuncios()->addItemASC(a1); lstCanales->getLstAnuncios()->addItemASC(a2); lstCanales->getLstAnuncios()->addItemASC(a3);
+
+	NodoAnuncioContratado * c1 = new NodoAnuncioContratado(1);
+	NodoAnuncioContratado * c2 = new NodoAnuncioContratado(2);
+	NodoAnuncioContratado * c3 = new NodoAnuncioContratado(3);
+
+	lstCanales->incluirContrato(1, 30, lstCanales->getLstAnuncios());
+	lstCanales->incluirContrato(2, 30, lstCanales->getLstAnuncios());
+	lstCanales->incluirContrato(3, 4, lstCanales->getLstAnuncios());
 }

@@ -40,19 +40,19 @@ void NodoAnuncioContratado::setSig(NodoAnuncioContratado * s)
 	this->sig = s;
 }
 
-NodoAnuncioContratado *& NodoAnuncioContratado::getOrigen(void)
+NodoAnuncio * NodoAnuncioContratado::getOrigen(void)
 {
-	return this->sig;
+	return this->origen;
 }
 
-void NodoAnuncioContratado::setOrigen(NodoAnuncioContratado * o)
+void NodoAnuncioContratado::setOrigen(NodoAnuncio * o)
 {
-	this->sig = o;
+	this->origen = o;
 }
 
 string NodoAnuncioContratado::toString(void)
 {
-	string s = "#Anuncio: " + std::to_string(this->getCodigoAnuncio()) + " (seg)\n";
-		   s += "Costo Total: " + std::to_string(this->getCostoTotal()) + "\n";
+	string s = " -----------------> #Anuncio: " + std::to_string(this->getCodigoAnuncio()) + " (seg)\n";
+		   s += " -----------------> Costo Total: " + std::to_string(this->getCostoTotal()) + "\n";
 	return s;
 }

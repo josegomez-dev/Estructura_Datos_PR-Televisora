@@ -62,11 +62,11 @@
     <ClCompile Include="ListaAnuncios.cpp">
       <Filter>Source Files\estruct.pr.structs</Filter>
     </ClCompile>
-    <ClCompile Include="NodoCanal.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ListaCanales.cpp">
       <Filter>Source Files\estruct.pr.structs</Filter>
+    </ClCompile>
+    <ClCompile Include="NodoCanal.cpp">
+      <Filter>Source Files\estruct.pr.entities</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
