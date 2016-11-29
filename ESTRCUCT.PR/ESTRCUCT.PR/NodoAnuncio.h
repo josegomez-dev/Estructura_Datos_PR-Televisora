@@ -18,7 +18,8 @@ private:
 
 	NodoAnuncio *sig;
 public:
-	NodoAnuncio(void);
+	NodoAnuncio(unsigned long);
+	NodoAnuncio(unsigned long, string);
 
 	void setCodigoAnuncio(void);
 	unsigned long getCodigoAnuncio(void);
@@ -29,7 +30,7 @@ public:
 	void setNombreEmpresa(string);
 	string getNombreEmpresa(void);
 	
-	NodoAnuncio *& getSig(void);
+	NodoAnuncio * getSig(void);
 	void setSig(NodoAnuncio *);
 
 	string toString(void);

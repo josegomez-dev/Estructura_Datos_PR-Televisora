@@ -2,11 +2,35 @@
 #include "NodoCanal.h"
 
 
-NodoCanal::NodoCanal()
+NodoCanal::NodoCanal(unsigned int codigoC)
 {
 	this->setAnt(NULL);
 	this->setSig(NULL);
-	this->setSubLst(NULL);
+	this->setSub(NULL);
+
+	this->setCodigoCanal(codigoC);
+	this->setNombreCanal("");
+	this->setTelefono("");
+	this->setMontoMinimo(0.0);
+	this->setTTransmicionMinima(5);
+	this->setTTransmicionMaxima(898);
+	this->setCostoPorMinuto(0.0);
+}
+
+NodoCanal::NodoCanal(unsigned int codigoC, string n)
+{
+	this->setAnt(NULL);
+	this->setSig(NULL);
+	this->setSub(NULL);
+
+	this->setCodigoCanal(codigoC);
+	this->setNombreCanal(n);
+	this->setTelefono("");
+	this->setMontoMinimo(0.0);
+	this->setTTransmicionMinima(5);
+	this->setTTransmicionMaxima(898);
+	this->setCostoPorMinuto(0.0);
+
 }
 
 unsigned int NodoCanal::getCodigoCanal(void)
@@ -79,7 +103,7 @@ void NodoCanal::setCostoPorMinuto(double cm)
 	this->costoPorMinuto = cm;
 }
 
-NodoCanal *& NodoCanal::getAnt(void)
+NodoCanal * NodoCanal::getAnt(void)
 {
 	return this->ant;
 }
@@ -89,7 +113,7 @@ void NodoCanal::setAnt(NodoCanal *a)
 	this->ant = a;
 }
 
-NodoCanal *& NodoCanal::getSig(void)
+NodoCanal * NodoCanal::getSig(void)
 {
 	return this->sig;
 }
@@ -100,14 +124,14 @@ void NodoCanal::setSig(NodoCanal *s)
 }
 
 
-NodoAnuncioContratado *& NodoCanal::getSubLst(void)
+NodoAnuncioContratado * NodoCanal::getSub(void)
 {
-	return this->subLst;
+	return this->sub;
 }
 
-void NodoCanal::setSubLst(NodoAnuncioContratado *sl)
+void NodoCanal::setSub(NodoAnuncioContratado *sl)
 {
-	this->subLst = sl;
+	this->sub = sl;
 }
 
 string NodoCanal::toString(void)

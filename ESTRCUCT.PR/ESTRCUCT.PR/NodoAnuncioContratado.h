@@ -11,7 +11,7 @@ private:
 	unsigned long codigoAnuncio;
 	double costoTotal;
 
-	NodoAnuncioContratado *origen;
+	NodoAnuncio *origen;
 	NodoAnuncioContratado *sig;
 public:
 	NodoAnuncioContratado(unsigned long, double c = 0.0);
@@ -25,11 +25,10 @@ public:
 	NodoAnuncioContratado *& getSig(void);
 	void setSig(NodoAnuncioContratado *);
 
-	NodoAnuncioContratado *& getOrigen(void);
-	void setOrigen(NodoAnuncioContratado *);
+	NodoAnuncio * getOrigen(void);
+	void setOrigen(NodoAnuncio *);
 
 	string toString(void);
-
 };
 
 #endif // NODOANUNCIOCONTRATADO_H

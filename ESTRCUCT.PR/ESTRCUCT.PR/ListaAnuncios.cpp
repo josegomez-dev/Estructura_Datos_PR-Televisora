@@ -5,9 +5,10 @@
 ListaAnuncios::ListaAnuncios()
 {
 	this->setCabeza(NULL);
+	this->setLongitud(0);
 }
 
-NodoAnuncio *& ListaAnuncios::getCabeza(void)
+NodoAnuncio * ListaAnuncios::getCabeza(void)
 {
 	return this->cabeza;
 }
@@ -46,20 +47,20 @@ void ListaAnuncios::addItemASC(NodoAnuncio * item)
 {
 	NodoAnuncio * aux = item;
 
-	if (cabeza == NULL) {
-		cabeza = aux;
+	if (this->getCabeza() == NULL) {
+		this->setCabeza(aux);
 	}
 	else {
 		if (aux->getCodigoAnuncio() < cabeza->getCodigoAnuncio()) {
-			aux->setSig(cabeza);
-			cabeza = aux;
+			aux->setSig(this->getCabeza());
+			this->setCabeza(aux);
 		}
 		else {
 			NodoAnuncio *ant = NULL;
 			NodoAnuncio *act = NULL;
 
-			ant = cabeza;
-			act = cabeza->getSig();
+			ant = this->getCabeza();
+			act = this->getCabeza()->getSig();
 
 			while ((act != NULL) && (act->getCodigoAnuncio() < aux->getCodigoAnuncio())) {
 				ant = ant->getSig();
