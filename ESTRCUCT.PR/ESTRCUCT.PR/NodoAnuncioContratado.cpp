@@ -53,7 +53,7 @@ void NodoAnuncioContratado::setOrigen(NodoAnuncio * o)
 string NodoAnuncioContratado::toString(void)
 {
 	string s = " -----------------> Anuncio: [#" + std::to_string(this->getCodigoAnuncio()) + "]" + this->getOrigen()->getNombreEmpresa() + "\n";
-		   s += " -----------------> Duracion del anuncio: " + std::to_string(this->getOrigen()->getTiempoDuracion()) + "\n";
+		   s += " -----------------> Duracion del anuncio: " + std::to_string(this->getOrigen()->getTiempoDuracion()) + " (seg)\n";
 		   s += " -----------------> Costo Total: " + std::to_string(this->getCostoTotal()) + "\n";
 	return s;
 }

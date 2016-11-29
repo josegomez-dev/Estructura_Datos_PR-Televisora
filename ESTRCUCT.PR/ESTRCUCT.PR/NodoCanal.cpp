@@ -12,12 +12,12 @@ NodoCanal::NodoCanal(unsigned int codigoC)
 	this->setNombreCanal("");
 	this->setTelefono("");
 	this->setMontoMinimo(0.0);
-	this->setTTransmicionMinima(5);
-	this->setTTransmicionMaxima(898);
-	this->setCostoPorMinuto(0.0);
+	this->setTTransmicionMinima(0);
+	this->setTTransmicionMaxima(0);
+	this->setCostoPorMinuto(0);
 }
 
-NodoCanal::NodoCanal(unsigned int codigoC, string n)
+NodoCanal::NodoCanal(unsigned int codigoC, string n, string tel, double mm, int tmin, int tmax, double c)
 {
 	this->setAnt(NULL);
 	this->setSig(NULL);
@@ -25,12 +25,11 @@ NodoCanal::NodoCanal(unsigned int codigoC, string n)
 
 	this->setCodigoCanal(codigoC);
 	this->setNombreCanal(n);
-	this->setTelefono("");
-	this->setMontoMinimo(0.0);
-	this->setTTransmicionMinima(5);
-	this->setTTransmicionMaxima(898);
-	this->setCostoPorMinuto(0.0);
-
+	this->setTelefono(tel);
+	this->setMontoMinimo(mm);
+	this->setTTransmicionMinima(tmin);
+	this->setTTransmicionMaxima(tmax);
+	this->setCostoPorMinuto(c);
 }
 
 unsigned int NodoCanal::getCodigoCanal(void)

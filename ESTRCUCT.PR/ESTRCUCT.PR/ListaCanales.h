@@ -31,8 +31,8 @@ public:
 	void addItem(NodoCanal *);
 	NodoCanal * retrieveItem(unsigned int);
 	NodoAnuncio * retrieveAnuncio(unsigned long);
-	bool incluirContrato(unsigned long, unsigned int, ListaAnuncios *);
-
+	bool incluirContrato(unsigned long, unsigned int);
+	ListaCanales * actualizarCobros();
 
 	string toString_StartToEnd(void);
 	string toString_EndToStart(void);

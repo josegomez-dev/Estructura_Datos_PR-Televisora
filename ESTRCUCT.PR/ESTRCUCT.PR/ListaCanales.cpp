@@ -112,29 +112,63 @@ NodoAnuncio * ListaCanales::retrieveAnuncio(unsigned long s)
 	return NULL;
 }
 
-bool ListaCanales::incluirContrato(unsigned long s, unsigned int codigoC, ListaAnuncios * lst)
+bool ListaCanales::incluirContrato(unsigned long s, unsigned int codigoC)
 {
 	NodoCanal * aux = this->retrieveItem(codigoC);
 
 	NodoAnuncioContratado * contrato = new NodoAnuncioContratado(s);
-	contrato->setOrigen(this->retrieveAnuncio(s)); // BUSCAR DE ANUNCIOS
+	contrato->setOrigen(this->retrieveAnuncio(s)); 
 
 	if (aux != NULL) {
-
 		if (aux->getSub() == NULL) {
 			aux->setSub(contrato);
 		}
 		else {
 			aux->getSub()->setSig(contrato);
-			//aux->setSub(contrato);
 		}
-
 	}
 	else {
 		return false;
 	}
-
 	return true;
+}
+
+ListaCanales * ListaCanales::actualizarCobros()
+{
+	NodoCanal * cn = this->getCabeza();
+	NodoAnuncioContratado * contrato = cn->getSub();
+
+	if (cn != NULL) {
+		do {
+			// aux on canales
+			if (contrato != NULL) {
+				while (contrato != NULL) {
+					// sub on contratos
+					NodoAnuncio * an = this->retrieveAnuncio(contrato->getCodigoAnuncio());
+					if (an->getTiempoDuracion() < cn->getTTransmicionMinima()) {
+						cout << "Se le cobrara el minimo: " << cn->getMontoMinimo() << "$" << endl;
+						contrato->setCostoTotal(cn->getMontoMinimo());
+					}
+					else if (an->getTiempoDuracion() > cn->getTTransmicionMaxima()) {
+						cout << "Se le cobrara el doble del costo por minuto, a los minutos extras: " << cn->getMontoMinimo() << "$" << endl;
+						int extras = an->getTiempoDuracion() - cn->getTTransmicionMaxima();
+						for (int i = 0; i < extras;i++) { // costo al double por minuto extra
+							contrato->setCostoTotal(contrato->getCostoTotal() + (cn->getCostoPorMinuto()*2));
+						}
+						for (int i = 0; i < (an->getTiempoDuracion() - extras); i++) { // Costo por minuto
+							contrato->setCostoTotal(contrato->getCostoTotal() + cn->getCostoPorMinuto());
+						}
+					}
+					contrato = contrato->getSig();
+				}
+			}
+			cn = cn->getSig();
+			contrato = cn->getSub();
+		} while (cn != this->getCabeza());
+	}
+	else {
+		return NULL;
+	}
 }
 
 string ListaCanales::toString_StartToEnd(void) {
