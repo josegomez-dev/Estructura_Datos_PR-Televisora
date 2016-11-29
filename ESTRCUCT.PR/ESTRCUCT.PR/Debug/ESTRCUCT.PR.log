@@ -1,0 +1,13 @@
+﻿  stdafx.cpp
+  NodoCanal.cpp
+  NodoAnuncioContratado.cpp
+  NodoAnuncio.cpp
+  ListaCanales.cpp
+  ListaAnuncios.cpp
+  ESTRCUCT.PR.cpp
+c:\users\alego\desktop\estrcuct.pr\estrcuct.pr\estrcuct.pr.cpp(119): warning C4101: 'ex': unreferenced local variable
+  Generating Code...
+c:\users\alego\desktop\estrcuct.pr\estrcuct.pr\estrcuct.pr.cpp(167): warning C4172: returning address of local variable or temporary: anuncio
+c:\users\alego\desktop\estrcuct.pr\estrcuct.pr\estrcuct.pr.cpp(190): warning C4172: returning address of local variable or temporary: canal
+  ESTRCUCT.PR.vcxproj -> C:\Users\alego\Desktop\ESTRCUCT.PR\Debug\ESTRCUCT.PR.exe
+  ESTRCUCT.PR.vcxproj -> C:\Users\alego\Desktop\ESTRCUCT.PR\Debug\ESTRCUCT.PR.pdb (Full PDB)
