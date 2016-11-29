@@ -145,17 +145,23 @@ ListaCanales * ListaCanales::actualizarCobros()
 				while (contrato != NULL) {
 					// sub on contratos
 					NodoAnuncio * an = this->retrieveAnuncio(contrato->getCodigoAnuncio());
+					
 					if (an->getTiempoDuracion() < cn->getTTransmicionMinima()) {
-						cout << "Se le cobrara el minimo: " << cn->getMontoMinimo() << "$" << endl;
+						cout << an->toString() << "Se le cobrara el minimo: " << cn->getMontoMinimo() << "$" << endl;
 						contrato->setCostoTotal(cn->getMontoMinimo());
 					}
 					else if (an->getTiempoDuracion() > cn->getTTransmicionMaxima()) {
-						cout << "Se le cobrara el doble del costo por minuto, a los minutos extras: " << cn->getMontoMinimo() << "$" << endl;
+						cout << an->toString() << "Se le cobrara el doble del costo por minuto, a los minutos extras: (Monto minimo: " << cn->getMontoMinimo() << " $)" << endl;
 						int extras = an->getTiempoDuracion() - cn->getTTransmicionMaxima();
 						for (int i = 0; i < extras;i++) { // costo al double por minuto extra
 							contrato->setCostoTotal(contrato->getCostoTotal() + (cn->getCostoPorMinuto()*2));
 						}
 						for (int i = 0; i < (an->getTiempoDuracion() - extras); i++) { // Costo por minuto
+							contrato->setCostoTotal(contrato->getCostoTotal() + cn->getCostoPorMinuto());
+						}
+					}else {
+						cout << an->toString() << "Costo por minuto: " << cn->getCostoPorMinuto() << "$" << endl;
+						for (int i = 0; i < ((int)an->getTiempoDuracion()/60); i++) { // Costo por minuto
 							contrato->setCostoTotal(contrato->getCostoTotal() + cn->getCostoPorMinuto());
 						}
 					}
