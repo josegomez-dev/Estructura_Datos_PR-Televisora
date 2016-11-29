@@ -1,4 +1,3 @@
-﻿  ListaCanales.cpp
-c:\users\alego\documents\github\estructura_datos_pr-televisora\estrcuct.pr\estrcuct.pr\listacanales.cpp(95): warning C4715: 'ListaCanales::retrieveItem': not all control paths return a value
+﻿  NodoAnuncioContratado.cpp
   ESTRCUCT.PR.vcxproj -> C:\Users\alego\Documents\GitHub\Estructura_Datos_PR-Televisora\ESTRCUCT.PR\Debug\ESTRCUCT.PR.exe
   ESTRCUCT.PR.vcxproj -> C:\Users\alego\Documents\GitHub\Estructura_Datos_PR-Televisora\ESTRCUCT.PR\Debug\ESTRCUCT.PR.pdb (Full PDB)

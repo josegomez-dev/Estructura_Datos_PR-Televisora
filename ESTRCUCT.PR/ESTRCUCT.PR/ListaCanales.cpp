@@ -179,7 +179,7 @@ string ListaCanales::toString_Super(void)
 			s += aux->toString() + "\n";
 			if (sub != NULL) {
 				while (sub != NULL) {
-					s += sub->toString();
+					s += sub->toString() + "\n";
 					sub = sub->getSig();
 				}
 			}
