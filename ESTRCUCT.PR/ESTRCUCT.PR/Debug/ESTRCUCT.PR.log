@@ -1,5 +1,4 @@
-﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppClean.targets(76,5): warning : The process cannot access the file 'c:\users\alego\documents\github\estructura_datos_pr-televisora\estrcuct.pr\debug\estrcuct.pr.pdb' because it is being used by another process.
-  stdafx.cpp
+﻿  stdafx.cpp
   NodoCanal.cpp
   NodoAnuncioContratado.cpp
   NodoAnuncio.cpp
@@ -9,7 +8,7 @@ c:\users\alego\documents\github\estructura_datos_pr-televisora\estrcuct.pr\estrc
   ESTRCUCT.PR.cpp
   Generating Code...
 c:\users\alego\documents\github\estructura_datos_pr-televisora\estrcuct.pr\estrcuct.pr\estrcuct.pr.cpp(175): warning C4172: returning address of local variable or temporary: canal
-c:\users\alego\documents\github\estructura_datos_pr-televisora\estrcuct.pr\estrcuct.pr\listacanales.cpp(95): warning C4715: 'ListaCanales::retrieveItem': not all control paths return a value
 c:\users\alego\documents\github\estructura_datos_pr-televisora\estrcuct.pr\estrcuct.pr\listacanales.cpp(178): warning C4715: 'ListaCanales::actualizarCobros': not all control paths return a value
+c:\users\alego\documents\github\estructura_datos_pr-televisora\estrcuct.pr\estrcuct.pr\listacanales.cpp(95): warning C4715: 'ListaCanales::retrieveItem': not all control paths return a value
   ESTRCUCT.PR.vcxproj -> C:\Users\alego\Documents\GitHub\Estructura_Datos_PR-Televisora\ESTRCUCT.PR\Debug\ESTRCUCT.PR.exe
   ESTRCUCT.PR.vcxproj -> C:\Users\alego\Documents\GitHub\Estructura_Datos_PR-Televisora\ESTRCUCT.PR\Debug\ESTRCUCT.PR.pdb (Full PDB)
