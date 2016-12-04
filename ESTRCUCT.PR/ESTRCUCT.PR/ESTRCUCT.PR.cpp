@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 
+
 HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE); // For use of SetConsoleTextAttribute()
 
 static ListaCanales * lstCanales = new ListaCanales();
@@ -72,7 +73,10 @@ bool ejecutarAccion(int opc) {
 
 			if (lstCanales->getLstAnuncios()->toString() != "") {
 				cout << lstCanales->getLstAnuncios()->toString() << endl;
-				crearContrato();
+				
+				if (crearContrato()) {
+					cout << "\n */!*/!*/! Contrato registrado exitosamente !/*!/*!/* \n" << endl;
+				}
 			}
 			else {
 				cout << "\n */!*/!*/! No hay anuncios contratados" << endl;
@@ -147,10 +151,10 @@ bool ejecutarAccion(int opc) {
 	return noSalir;
 }
 
-void crearContrato(void) {
+bool crearContrato(void) {
 	unsigned long codigoAn;	cout << "Ingrese el codigo del anuncio: "; cin >> codigoAn;
 	unsigned int codigoC; cout << "Ingrese el codigo del canal: "; cin >> codigoC;
-	lstCanales->incluirContrato(codigoAn, codigoC);
+	return lstCanales->incluirContrato(codigoAn, codigoC);
 }
 
 NodoAnuncio * crearAnuncio(void) {

@@ -32,6 +32,7 @@ public:
 	NodoCanal * retrieveItem(unsigned int);
 	NodoAnuncio * retrieveAnuncio(unsigned long);
 	bool incluirContrato(unsigned long, unsigned int);
+	bool buscarAnuncioContratado(NodoCanal *, NodoAnuncioContratado *);
 	ListaCanales * actualizarCobros();
 
 	string toString_StartToEnd(void);

@@ -115,22 +115,59 @@ NodoAnuncio * ListaCanales::retrieveAnuncio(unsigned long s)
 bool ListaCanales::incluirContrato(unsigned long s, unsigned int codigoC)
 {
 	NodoCanal * aux = this->retrieveItem(codigoC);
-
 	NodoAnuncioContratado * contrato = new NodoAnuncioContratado(s);
-	contrato->setOrigen(this->retrieveAnuncio(s)); 
+	
+	if ( !(this->buscarAnuncioContratado(aux, contrato)) ) {
+		contrato->setOrigen(this->retrieveAnuncio(s));
 
-	if (aux != NULL) {
-		if (aux->getSub() == NULL) {
-			aux->setSub(contrato);
+		if (aux != NULL) {
+			if (aux->getSub() == NULL) {
+				aux->setSub(contrato);
+			}
+			else {
+				aux->getSub()->setSig(contrato);
+			}
 		}
 		else {
-			aux->getSub()->setSig(contrato);
+			return false;
 		}
 	}
 	else {
 		return false;
 	}
+
 	return true;
+}
+
+bool ListaCanales::buscarAnuncioContratado(NodoCanal * pcan, NodoAnuncioContratado * pcon)
+{
+	NodoCanal * cn = this->getCabeza();
+	NodoAnuncioContratado * contrato = cn->getSub();
+
+	if (cn != NULL) {
+		do {
+			// aux on canales
+			if (contrato != NULL) {
+				while (contrato != NULL) {
+					// sub on contratos
+
+					if (contrato->getCodigoAnuncio() == pcon->getCodigoAnuncio() && cn->getCodigoCanal() == pcan->getCodigoCanal()) {
+						cout << "\n */!*/!*/!  El anuncio ya fue contratado en este canal  !/*!/*!/* \n" << endl;
+						return true;
+					}
+
+					contrato = contrato->getSig();
+				}
+			}
+			cn = cn->getSig();
+			contrato = cn->getSub();
+		} while (cn != this->getCabeza());
+	}
+	else {
+		return false;
+	}
+
+	return false;
 }
 
 ListaCanales * ListaCanales::actualizarCobros()
