@@ -144,7 +144,7 @@ string ListaAnuncios::toString(void)
 		}
 	}
 	else {
-		return "*/!*/!*/! No hay datos !/*!/*!/* \n"; 
+		return ""; 
 	}
 	return s;
 }

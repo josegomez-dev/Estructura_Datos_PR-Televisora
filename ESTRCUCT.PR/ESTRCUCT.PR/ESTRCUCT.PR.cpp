@@ -65,11 +65,19 @@ bool ejecutarAccion(int opc) {
 		case 2: // Registrar Canal
 
 			lstCanales->addItem(crearCanal());
-			cout << "Canal registrado exitosamente" << endl;
+			cout << "\n */!*/!*/! Canal registrado exitosamente !/*!/*!/* \n" << endl;
 			break;
 
 		case 3: // Incluir Contrato
-			crearContrato();
+
+			if (lstCanales->getLstAnuncios()->toString() != "") {
+				cout << lstCanales->getLstAnuncios()->toString() << endl;
+				crearContrato();
+			}
+			else {
+				cout << "\n */!*/!*/! No hay anuncios contratados" << endl;
+			}
+
 			break;
 
 		case 4: // Consultar Anuncio
